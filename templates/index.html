@@ -1,0 +1,194 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hindi PDF Word Counter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-4">Upload Hindi PDF</h1>
+        <form id="upload-form">
+            <input type="file" name="file" accept=".pdf" class="mb-4 w-full">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Get Word Count</button>
+        </form>
+        <div id="result" class="mt-4 text-lg font-medium text-green-600"></div>
+    </div>
+    <script>
+        document.getElementById("upload-form").addEventListener("submit", async function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const response = await fetch("/upload", {
+                method: "POST",
+                body: formData
+            });
+            const data = await response.json();
+            if (data.word_count !== undefined) {
+                document.getElementById("result").innerText = `Total Word Count: ${data.word_count}`;
+            } else {
+                document.getElementById("result").innerText = `Error: ${data.error}`;
+            }
+        });
+    </script>
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Hindi PDF Word Counter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-4">Upload Hindi PDF</h1>
+        <form id="upload-form">
+            <input type="file" name="file" accept=".pdf" class="mb-4 w-full" required />
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Get Word Count</button>
+        </form> -->
+
+        <!-- Spinner (hidden by default) -->
+        <!-- <div id="spinner" class="flex justify-center mt-4" style="display:none;">
+            <svg class="animate-spin -ml-1 mr-3 h-8 w-8 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+            </svg>
+        </div>
+
+        <div id="result" class="mt-4 text-lg font-medium text-green-600"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById("upload-form");
+        const spinner = document.getElementById("spinner");
+        const resultDiv = document.getElementById("result");
+
+        form.addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            // Show spinner and clear previous result
+            spinner.style.display = "flex";
+            resultDiv.innerText = "";
+
+            const formData = new FormData(this);
+
+            try {
+                const response = await fetch("/upload", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                spinner.style.display = "none";
+
+                if (data.word_count !== undefined) {
+                    resultDiv.innerText = `Total Word Count: ${data.word_count}`;
+                } else {
+                    resultDiv.innerText = `Error: ${data.error}`;
+                }
+            } catch (error) {
+                spinner.style.display = "none";
+                resultDiv.innerText = "Upload failed. Please try again.";
+                console.error(error);
+            }
+        });
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>BHU Press Analyzer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        
+        <!-- <h1 class="text-2xl font-bold mb-4">Upload PDF</h1> -->
+
+        <!-- <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md relative"> -->
+    <!-- BHU Logo -->
+    <!-- <img src="C:\Users\Lenovo\Desktop\pdf_word_counter\static\bhu.png" 
+         alt="BHU Logo" 
+         class="absolute top-4 right-4 w-10 h-10 object-contain" /> -->
+
+
+    <div class="mb-6 text-center">
+        <p class="text-4xl font-extrabold bg-gradient-to-r from-rose-500 via-orange-400 to-yellow-400 text-transparent bg-clip-text animate-pulse drop-shadow-md">
+        Welcome to
+        </p>
+        <h1 class="text-3xl font-extrabold text-gray-800 mt-2">BHU Press Analyzer</h1>
+    </div>
+
+
+        <!-- Dropdown -->
+        <label for="language" class="block mb-2 text-sm font-medium text-gray-700">Select Language</label>
+        <select id="language" class="mb-4 w-full border border-gray-300 rounded px-3 py-2">
+            <option value="hindi">Hindi Word Count</option>
+            <option value="english">English Word Count</option>
+        </select>
+
+        <!-- Upload Form -->
+        <form id="upload-form">
+            <input type="file" name="file" accept=".pdf" class="mb-4 w-full" required />
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Get Word Count</button>
+        </form>
+
+        <!-- Spinner -->
+        <div id="spinner" class="flex justify-center mt-4" style="display:none;">
+            <svg class="animate-spin -ml-1 mr-3 h-8 w-8 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+            </svg>
+        </div>
+
+        <!-- Result -->
+        <div id="result" class="mt-4 text-lg font-medium text-green-600"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById("upload-form");
+        const spinner = document.getElementById("spinner");
+        const resultDiv = document.getElementById("result");
+        const languageSelect = document.getElementById("language");
+
+        form.addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            // Clear previous result and show spinner
+            resultDiv.innerText = "";
+            spinner.style.display = "flex";
+
+            const formData = new FormData(this);
+            const selectedLanguage = languageSelect.value;
+            const isHindi = selectedLanguage === "hindi";
+
+            try {
+                const response = await fetch(`/upload?hindi=${isHindi}`, {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await response.json();
+                spinner.style.display = "none";
+
+                if (data.word_count !== undefined) {
+                    resultDiv.innerText = `Total Word Count: ${data.word_count}`;
+                } else {
+                    resultDiv.innerText = `Error: ${data.error}`;
+                }
+            } catch (error) {
+                spinner.style.display = "none";
+                resultDiv.innerText = "Upload failed. Please try again.";
+                console.error(error);
+            }
+        });
+    </script>
+</body>
+</html>
