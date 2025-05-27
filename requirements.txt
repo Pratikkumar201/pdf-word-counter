@@ -1,5 +1,9 @@
-Flask
-pdf2image
-pytesseract
+# Flask
+# pdf2image
+# pytesseract
+# Flask
+# gunicorn
+
 Flask
 gunicorn
+PyMuPDF
